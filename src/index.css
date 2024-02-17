@@ -18,23 +18,20 @@ body {
 }
 
 .menubar .icon {
-  padding: 5%;
+  padding: 20% 0%;
   color: black;
   text-align: center;
   text-decoration: none;
 }
 
-.menubar>.link {
+.menubar>.link,
+.menubar>.link1 {
   width: 100%;
   margin: auto;
   text-align: center;
 }
 
-.menubar .icon:hover {
-  border-top: 3px solid black;
-}
-
-.menubar .icon:active {
+.link1>.icon {
   border-top: 3px solid black;
 }
 
@@ -47,6 +44,7 @@ body {
   justify-content: center;
   padding: 0% 4%;
   position: relative;
+  min-height: 90vh;
 }
 
 .card {
@@ -129,22 +127,14 @@ body {
 }
 
 .badgeWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.badgeWrapper>div {
   display: grid;
+  padding: 5%;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10%;
+  grid-auto-rows: auto;
+  gap: 5%;
 }
 
-.badgeWrapper>div>div {
-  width: 100%;
-}
-
-.badgeWrapper>div>div>img {
+.badgeWrapper>img {
   width: 100%;
 }
 

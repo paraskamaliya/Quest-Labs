@@ -153,17 +153,13 @@ function Profile() {
                     </div>
                 </div>
                 {active == 2 && <div className='badgeWrapper'>
-                    {badges.length > 0 ? <div>
-                        {badges.map((el) => {
-                            return <div key={el.badgeId}>
-                                <img src={el.imageUrl} alt="" />
-                            </div>
-                        })}
-                    </div> : <p>No Badges Found</p>}
+                    {badges.length > 0 && badges.map((el) => {
+                        return <img src={el.imageUrl} alt="" key={el._id} />
+                    })}
                 </div>}
                 {active == 3 && <div className='pointWrapper'>
                     {pointHistory.length > 0 && pointHistory.map((el) => {
-                        return <div className='pointsRow'>
+                        return <div className='pointsRow' key={el._id}>
                             <p>{el.title}</p>
                             <p>{el.xp}</p>
                         </div>
