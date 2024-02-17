@@ -17,7 +17,7 @@ function MenuBar() {
             <Link to={"#"} className='link'>
                 <HiShoppingBag className='icon' size={"1.5rem"} />
             </Link>
-            <Link to={"/"} className='link1'>
+            <Link to={"/"} className='link'>
                 <IoMdPerson className='icon' size={"1.5rem"} />
             </Link>
         </div>

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import LoadingIndicator from '../Components/LoadingIndicator';
 
+import { Modal, ModalBody, ModalContent, ModalOverlay, useDisclosure, ModalCloseButton } from '@chakra-ui/react';
+
 function Profile() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const [load, setLoad] = useState(true);
 
     const [image, setImage] = useState("");
@@ -15,6 +18,7 @@ function Profile() {
 
     const [badges, setBadges] = useState([]);
     const [pointHistory, setPointHistory] = useState([]);
+    const [modalData, setModalData] = useState("");
 
     const fetchImageData = async () => {
         try {
@@ -123,7 +127,7 @@ function Profile() {
             <h2>Profile</h2>
             <img src={image} alt="" id='profileImg' />
             <div className='card'>
-                <h2>{name}</h2>
+                <h2 id='name'>{name}</h2>
                 <div className='userData'>
                     <div>
                         <p>{points}</p>
@@ -154,7 +158,10 @@ function Profile() {
                 </div>
                 {active == 2 && <div className='badgeWrapper'>
                     {badges.length > 0 && badges.map((el) => {
-                        return <img src={el.imageUrl} alt="" key={el._id} />
+                        return <img src={el.imageUrl} alt="" key={el._id} onClick={() => {
+                            onOpen();
+                            setModalData(el.imageUrl)
+                        }} />
                     })}
                 </div>}
                 {active == 3 && <div className='pointWrapper'>
@@ -166,6 +173,19 @@ function Profile() {
                     })}
                 </div>}
             </div>
+            <Modal isOpen={isOpen} onClose={onClose} isCentered size={"md"}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <div className='modalDiv'>
+                            <img src={modalData} alt="" />
+                            <h2>Badge Unlocked!🌟</h2>
+                            <p>🎉Level Up! Earned a shiny new badge!🎖️✨</p>
+                        </div>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </div>
     )
 }
